@@ -6,14 +6,8 @@ export default async function handler(req, res) {
 
     // Check time
     const hour = new Date().getHours();
-    let statusText;
-
-    if (hour >= 12) {
-      statusText = "Evening";
-    } else {
-      statusText = "Morning";
-    }
-
+    const statusText = hour >= 12 ? "Evening" : "Morning";
+    
     const result = await client.query(
       "UPDATE active SET active=$1 WHERE id=$2",
       [statusText, 1]
@@ -28,3 +22,4 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: error.message });
   }
 }
+
