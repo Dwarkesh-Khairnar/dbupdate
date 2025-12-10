@@ -11,11 +11,11 @@ export async function connectDatabase() {
   }
 
   client = new Client({
-    host: process.env.postgresql_host,
-    user: process.env.postgresql_user,
-    database: process.env.postgresql_database,
-    password: process.env.postgresql_password,
-    port: process.env.postgres_port,
+  host: process.env.POSTGRESQL_HOST,
+  user: process.env.POSTGRESQL_USER,
+  database: process.env.POSTGRESQL_DATABASE,
+  password: process.env.POSTGRESQL_PASSWORD,
+  port: process.env.POSTGRES_PORT,
     ssl: {
       rejectUnauthorized: true,
       ca:`-----BEGIN CERTIFICATE-----
@@ -60,3 +60,4 @@ guEing==
 }
 
 export { client };
+
