@@ -43,7 +43,7 @@ export default async function handler(req, res) {
     console.log("CRON TRIGGERED AT:", new Date().toISOString());
 
     const result = await client.query(
-      "UPDATE active SET active=$1 WHERE id=$2",
+      "UPDATE active SET day=$1 WHERE id=$2",
       [day, 1]
     );
 
@@ -56,6 +56,7 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: error.message });
   }
 }
+
 
 
 
